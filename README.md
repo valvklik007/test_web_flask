@@ -8,7 +8,7 @@
 
 ```bash
 git clone https://github.com/valvklik007/test_web_flask.git
-cd weather-app
+cd test_web_flask
 docker-compose up --build
 ```
 После запуска открой в браузере: http://localhost:5000
