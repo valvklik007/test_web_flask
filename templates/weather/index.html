@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 class="mb-4">Прогноз погоды</h1>
+
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+            {{ form.city.label(class="form-label") }}
+            {{ form.city(class="form-control", placeholder="Введите город") }}
+        </div>
+        {{ form.submit(class="btn btn-primary") }}
+    </form>
+
+    {% if weather %}
+        <div class="mt-4 card p-3 shadow-sm">
+            <h5>Погода в {{ city }}:</h5>
+            <p><strong>Дата:</strong> {{ weather.forecast.forecastday[0].date }}</p>
+            <p><strong>Температура на данный момент:</strong> Время: {{weather.current.last_updated}} Температура: {{ weather.current.temp_c }}°C</p>
+            <p><strong>Температура максимальная:</strong> {{ weather.forecast.forecastday[0].day.maxtemp_c }}°C</p>
+            <p><strong>Температура минимальная:</strong> {{ weather.forecast.forecastday[0].day.mintemp_c }}°C</p>
+            <p><strong>Ветер kph:</strong> {{ weather.current.wind_kph }}°C</p>
+        </div>
+    {% elif last_city %}
+        <form method="POST">
+             {{ form.hidden_tag() }}
+            <input type="hidden" name="city" value="{{ last_city }}">
+            <button class="mt-4 text-muted" type="submit">Вы ранее смотрели погоду в <strong>{{ last_city }}</strong></button>
+        </form>
+    {% endif %}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} mt-3">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <a href="{{ url_for('weather.history') }}" class="btn btn-secondary mt-4">История</a>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2 class="mt-4">История запросов</h2>
+        <ul class="list-group mt-3">
+            {% for s in searches %}
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>{{ s.city }}</span>
+                    <small class="text-muted">{{ s.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</small>
+                </li>
+            {% endfor %}
+        </ul>
+    <a href="{{ url_for('weather.index') }}" class="btn btn-secondary mt-4">← Назад</a>
+{% endblock %}
