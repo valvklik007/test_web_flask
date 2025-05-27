@@ -26,7 +26,7 @@ docker-compose up --build
 ```
 http://localhost:5000/api/stats
 ```
-Ответ:
+Ответ в json формате:
 ```json
 [
   {
