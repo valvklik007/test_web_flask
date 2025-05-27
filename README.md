@@ -39,3 +39,12 @@ http://localhost:5000/api/stats
   }
 ]
 ```
+
+## 📚 Использовалось
+```
+1. Flsk
+2. Flask-wtf
+3. Sqlalchemy
+4. Flask-Migrate
+5. SQLite
+```
