@@ -11,7 +11,7 @@ git clone https://github.com/valvklik007/test_web_flask.git
 cd test_web_flask
 docker-compose up --build
 ```
-После запуска открой в браузере: http://localhost:5000
+После запуска откройте в браузере: http://localhost:5000
 
 ✅ Реализовано
 
